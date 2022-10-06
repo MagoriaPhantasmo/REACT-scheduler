@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import logo from './logo.svg';
 import Banner from './components/Banner'
 import CourseList from './components/CourseList'
