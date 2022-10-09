@@ -1,50 +1,35 @@
 import { useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useJsonQuery } from './utilities/fetch'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ReactDOM from "react-dom";
 import logo from './logo.svg';
-import Banner from './components/Banner'
-import TermPage from './components/TermPage'
+
 
 import './App.css';
 
+import  LandingPage  from './components/LandingPage'
 
 
-const Main = () => {
-  const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php")
-
-
-  if (error) return <h1>Error loading schedule: {`${error}`}</h1>;
-  if (isLoading) return <h1>Loading schedule...</h1>;
-  if (!schedule) return <h1>No user data found</h1>;
- 
- 
-  return (
-    <div>
-      <h1>
-        <Banner title={schedule.title} />
-      </h1>
-
-      <div>
-        <TermPage courses={schedule.courses}/>
-      </div>
-    </div>
-  )
-}
-
-const queryClient = new QueryClient();
-
+//<Route path="/edit" element={<UserEditor user="Man" />} />
+//
 const App = () => {
   
   return (
-    <QueryClientProvider client={queryClient}>
-    <div>
-      <Main />
+    
       
-    </div>
-    </QueryClientProvider>
-  );
+        <BrowserRouter>
+          <div className='App'>
+            
+            <LandingPage />
+          </div>
+        </BrowserRouter>
+      
+    
+  )
+  
 };
 
 export default App;
