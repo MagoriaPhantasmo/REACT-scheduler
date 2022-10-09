@@ -1,0 +1,27 @@
+
+#within{
+  position: absolute;
+  right: 0%;
+ 
+}
+
+
+.course .card{
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    padding-bottom: 50px;
+  }
+
+ .selected{
+    color:rgb(10, 3, 52);
+    background-color: aquamarine;
+  }
+
+  .disabled{
+    pointer-events: none;
+    background-color: gray;
+  }
