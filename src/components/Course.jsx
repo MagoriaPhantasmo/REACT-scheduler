@@ -1,15 +1,16 @@
 import "./Course.css"
 import { conflictcheck } from "../utilities/supplementary"
 import {Link, Route, Routes} from 'react-router-dom'
-import { useAuthState } from "../utilities/firebase"
 
 import EditCourseForm  from './EditCourseForm'
 
-const CourseEdit = ({course}) => {
-    const page = course.term[0] + course.number
+const CourseEdit = ({course, admin}) => {
+    const page = course.term[0] + course.number;
+    //const result = useProfile();
+    //console.log(result);
     //console.log(useAuthState());
     return (
-        useAuthState() === null ? null : 
+        !admin ? null : 
     <Link to={`${page}/edit`} >
         <button className="btn" id="within" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
@@ -25,7 +26,7 @@ const CourseEdit = ({course}) => {
 
 
 
-const Course = ({index, info, selected, toggleSelected, all}) => {
+const Course = ({index, info, selected, toggleSelected, all, admin}) => {
     const selectedWO = selected.filter(s => s !== index);
     const selectedInfo = selectedWO.map(x => Object.values(all)[x]);
     const disabled = conflictcheck(info, selectedInfo)
@@ -41,7 +42,7 @@ const Course = ({index, info, selected, toggleSelected, all}) => {
             
             
             
-            <CourseEdit course={info} />    
+            <CourseEdit course={info} admin={admin}/>    
             <div className= {`card-body ${selected.includes(index) ? 'selected' : ''} ${disabled && !selected.includes(index) ? 'disabled' : ''}`}
                     onClick={ disabled ? null : () => toggleSelected(index)}>
                 

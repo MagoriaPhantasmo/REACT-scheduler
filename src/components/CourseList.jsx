@@ -2,7 +2,7 @@ import './CourseList.css'
 import Course from './Course'
 import { useState } from 'react'
 
-const CourseList = ({courses, term, selected, setSelection}) => {
+const CourseList = ({courses, term, selected, setSelection, admin}) => {
     
 
 
@@ -13,7 +13,7 @@ const CourseList = ({courses, term, selected, setSelection}) => {
     const temp = Object.values(courses).map((value, index) => {
         if (value.term === term){
         return (
-            <Course index={index} info={value} selected={selected} toggleSelected={toggleSelected} all={courses}/>
+            <Course index={index} info={value} selected={selected} toggleSelected={toggleSelected} all={courses} admin={admin}/>
             )
         }
     }

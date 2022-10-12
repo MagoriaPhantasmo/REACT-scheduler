@@ -5,6 +5,9 @@ import Schedule from "./Schedule"
 import Modal from "./Modal"
 import SignInOut from "./SignIn";
 
+import { useProfile } from "../utilities/profile"
+
+
 export const terms = {
     Fall : "Fall",
     Winter : "Winter",
@@ -41,7 +44,14 @@ const CurrentTerm = ({selection}) => (
 const TermPage = ({courses}) => {
     const [selection, setSelection] = useState(Object.keys(terms)[0]);
     const [openScheduleDialog, setScheduleDialog] = useState(false);
-    const [coursesSelected, setCourses] = useState([])
+    const [coursesSelected, setCourses] = useState([]);
+    const [profile, profileLoading, profileError] = useProfile();
+
+    if (profileError) return <h1>Error loading profile: {`${profileError}`}</h1>
+    if (profileLoading) return <h1>Loading user profile</h1>
+    if (!profile) return <h1>No profile data</h1>
+
+    
     
 
     const openScheduleModal = () => setScheduleDialog(true);
@@ -61,7 +71,7 @@ const TermPage = ({courses}) => {
          
                 <CurrentTerm selection={selection}/>
                 
-                <CourseList courses = {courses} term= {selection} selected={coursesSelected} setSelection={setCourses}/>
+                <CourseList courses = {courses} term= {selection} selected={coursesSelected} setSelection={setCourses} admin={profile.isAdmin}/>
                 
             </div>
         );

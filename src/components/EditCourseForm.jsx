@@ -8,10 +8,10 @@ import { useDbUpdate } from '../utilities/firebase';
 const validateCourseData = (key, val) => {
   console.log(key + val);
   switch (key) {
-    case 'Course Title':
+    case 'title':
       return /(^\w\w)/.test(val) ? '' : 'Course Title needs at least two characters eg. UI';
-    case 'Meeting Time':
-      return /((M|Tu|W|Th|F)+) ([0-9]{1,2}):([0-9]{2})-([0-9]{1,2}):([0-9]{2})/.test(val) ? '' 
+    case 'meets':
+      return /^((M|Tu|W|Th|F)+) ([0-9]{1,2}):([0-9]{2})-([0-9]{1,2}):([0-9]{2}$)/.test(val) ? '' 
         : 'Must specify weekday and start/end times ex. MTuWThF 0:00-12:59'
     default: return '';
   }
@@ -28,11 +28,11 @@ const InputField = ({name, text, state, change}) => (
 );
 */
 const InputField = ({name, text, id, state, change}) => (
-  <div className="mb-3">
+  <div className="mb-3" align="left">
     <label htmlFor={name} className="form-label">{text}</label>
     <input className="form-control" id={id} name={text} 
       defaultValue={name} onChange={change} />
-    <div className="invalid-feedback">{state.errors?.[text]}</div>
+    <div className="invalid-feedback">{state.errors?.[id]}</div>
   </div>
 );
 
