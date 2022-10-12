@@ -1,12 +1,15 @@
 import "./Course.css"
 import { conflictcheck } from "../utilities/supplementary"
 import {Link, Route, Routes} from 'react-router-dom'
+import { useAuthState } from "../utilities/firebase"
 
 import EditCourseForm  from './EditCourseForm'
 
 const CourseEdit = ({course}) => {
     const page = course.term[0] + course.number
+    //console.log(useAuthState());
     return (
+        useAuthState() === null ? null : 
     <Link to={`${page}/edit`} >
         <button className="btn" id="within" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
@@ -15,12 +18,12 @@ const CourseEdit = ({course}) => {
             </svg>
         </button>
     </Link>
-)
+
+    )
+
 }
 
-const tempdummythicc= () =>{
-    console.log("worked");
-} 
+
 
 const Course = ({index, info, selected, toggleSelected, all}) => {
     const selectedWO = selected.filter(s => s !== index);
@@ -28,7 +31,7 @@ const Course = ({index, info, selected, toggleSelected, all}) => {
     const disabled = conflictcheck(info, selectedInfo)
 
     const page = info.term[0] + info.number
-    console.log(page)
+    
     //dropped this chief key = {index}
     return (
     

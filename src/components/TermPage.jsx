@@ -3,6 +3,7 @@ import { useState } from "react";
 import CourseList from "./CourseList"
 import Schedule from "./Schedule"
 import Modal from "./Modal"
+import SignInOut from "./SignIn";
 
 export const terms = {
     Fall : "Fall",
@@ -41,6 +42,7 @@ const TermPage = ({courses}) => {
     const [selection, setSelection] = useState(Object.keys(terms)[0]);
     const [openScheduleDialog, setScheduleDialog] = useState(false);
     const [coursesSelected, setCourses] = useState([])
+    
 
     const openScheduleModal = () => setScheduleDialog(true);
     const closeScheduleModal = () => setScheduleDialog(false);
@@ -51,7 +53,10 @@ const TermPage = ({courses}) => {
                 <Modal courses={courses} coursesSelected={coursesSelected} open={openScheduleDialog} close={closeScheduleModal} />
                 <div className="d-flex justify-content-between">
                     <TermSelector selection={selection} setSelection={setSelection}/>
-                    <Schedule open={openScheduleModal}/>
+                    <div className="d-flex justify-content-between">
+                        <Schedule open={openScheduleModal}/>
+                        <SignInOut />
+                    </div>
                 </div>
          
                 <CurrentTerm selection={selection}/>
