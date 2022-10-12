@@ -4,14 +4,25 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref, update } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCqy8l97tEWjvW3V1B0f9bMsMLFk9D4sWk",
-  authDomain: "maxtactoe.firebaseapp.com",
-  databaseURL: "https://maxtactoe.firebaseio.com",
-  projectId: "maxtactoe",
-  storageBucket: "maxtactoe.appspot.com",
-  messagingSenderId: "672040841619",
-  appId: "1:672040841619:web:e488e188d5b93db7753866"
+
+  apiKey: "AIzaSyApDuLF_ejbUgcK4E27FJsTxqRMeA3kRao",
+
+  authDomain: "react-scheduler-ca436.firebaseapp.com",
+
+  databaseURL: "https://react-scheduler-ca436-default-rtdb.firebaseio.com",
+
+  projectId: "react-scheduler-ca436",
+
+  storageBucket: "react-scheduler-ca436.appspot.com",
+
+  messagingSenderId: "1096973138464",
+
+  appId: "1:1096973138464:web:6e1b3bab73dcf168ccda45",
+
+  measurementId: "G-QM5679X7SY"
+
 };
+
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
