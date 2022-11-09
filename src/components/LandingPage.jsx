@@ -18,7 +18,7 @@ const CourseForUrl = ({schedule}) =>  {
 }
 
 const Main = () => {
-    //const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php")
+    //const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php")\
     const [schedule, error] = useDbData("/");
   
     if (error) return <h1>Error loading schedule: {`${error}`}</h1>;

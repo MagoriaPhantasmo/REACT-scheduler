@@ -46,7 +46,7 @@ const Course = ({index, info, selected, toggleSelected, all, admin}) => {
             <div className= {`card-body ${selected.includes(index) ? 'selected' : ''} ${disabled && !selected.includes(index) ? 'disabled' : ''}`}
                     onClick={ disabled ? null : () => toggleSelected(index)}>
                 
-                    <h5 className='card-title'>{info.term} CS {info.number}</h5>
+                    <h5 className='card-title' data-cy="course">{info.term} CS {info.number}</h5>
                         
                     
                     <p className='card-text'>{info.title}</p>

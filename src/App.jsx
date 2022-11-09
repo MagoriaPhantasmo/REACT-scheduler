@@ -16,6 +16,8 @@ import  LandingPage  from './components/LandingPage'
 //<Route path="/edit" element={<UserEditor user="Man" />} />
 //
 const App = () => {
+  //console.log(import.meta.env.cool);
+  //console.log(window.EMULATION);
   
   return (
     
